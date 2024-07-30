@@ -1,3 +1,3 @@
 export default function App() {
-  return <div>Media Album</div>;
+  return <h1 className="text-3xl font-bold underline">Media Album</h1>;
 }
