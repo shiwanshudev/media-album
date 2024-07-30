@@ -1,3 +1,8 @@
+import UsersList from "./components/UsersList";
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Media Album</h1>;
+  return (
+    <div className="container mx-auto">
+      <UsersList />
+    </div>
+  );
 }
