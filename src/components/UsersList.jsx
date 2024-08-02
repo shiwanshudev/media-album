@@ -14,7 +14,7 @@ export default function UsersList() {
   if (error) {
     return <div>Error</div>;
   } else if (isLoading) {
-    return <Skeleton times={5} />;
+    return <Skeleton times={5} className="h-10 w-full" />;
   } else {
     return <div>{data.length}</div>;
   }
