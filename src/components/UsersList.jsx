@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUsers, addUser } from "../store";
 import { useSelector } from "react-redux";
@@ -7,14 +7,28 @@ import Button from "./Button";
 
 export default function UsersList() {
   const dispatch = useDispatch();
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false);
+  const [loadingUsersError, setLoadingUsersError] = useState(null);
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
+  const [creatingUserError, setCreatingUserError] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    setIsLoadingUsers(true);
+    dispatch(fetchUsers())
+      .unwrap()
+      .catch((error) => setLoadingUsersError(error))
+      .finally(() => setIsLoadingUsers(false));
+    // BAD because fetchUsers is asynchronous in nature
+    // setIsLoadingUsers(false); // NO
   }, []);
   const handleUserAdd = () => {
-    dispatch(addUser());
+    setIsCreatingUser(true);
+    dispatch(addUser())
+      .unwrap()
+      .catch((error) => setCreatingUserError(error))
+      .finally(() => setIsCreatingUser(false));
   };
-  const { data, isLoading, error } = useSelector((state) => state.users);
+  const { data } = useSelector((state) => state.users);
 
   const renderedUsers = data.map((user) => (
     <div key={user.id} className="mb-2 border rounded">
@@ -23,20 +37,26 @@ export default function UsersList() {
       </div>
     </div>
   ));
-
-  if (error) {
-    return <div>Error</div>;
-  } else if (isLoading) {
-    return <Skeleton times={5} className="h-10 w-full" />;
-  } else {
-    return (
-      <div>
-        <div className="flex flex-row justify-between m-3">
-          <h1 className="m-2 text-xl">Users</h1>
+  console.log(isCreatingUser);
+  return (
+    <div>
+      <div className="flex flex-row justify-between m-3">
+        <h1 className="m-2 text-xl">Users</h1>
+        {isCreatingUser ? (
+          "Creating User..."
+        ) : (
           <Button onClick={handleUserAdd}>+ Add User</Button>
-        </div>
-        {renderedUsers}
+        )}
+        {creatingUserError && "Error creating user..."}
       </div>
-    );
-  }
+
+      {isLoadingUsers ? (
+        <Skeleton times={5} className="h-10 w-full" />
+      ) : (
+        renderedUsers
+      )}
+
+      {loadingUsersError && "Error displaying users..."}
+    </div>
+  );
 }
