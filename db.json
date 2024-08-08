@@ -1,16 +1,8 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Myra"
-    },
-    {
       "id": "4a56",
       "name": "Ophelia"
-    },
-    {
-      "id": "0887",
-      "name": "Kristofer"
     },
     {
       "id": "6f7b",
@@ -21,24 +13,8 @@
       "name": "Darien"
     },
     {
-      "id": "12b2",
-      "name": "Millie"
-    },
-    {
-      "id": "e891",
-      "name": "Oda"
-    },
-    {
       "id": "b33b",
       "name": "Rhiannon"
-    },
-    {
-      "id": "1cb2",
-      "name": "Art"
-    },
-    {
-      "id": "6c66",
-      "name": "Devan"
     },
     {
       "id": "25bb",
