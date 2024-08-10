@@ -21,6 +21,11 @@
       "name": "Willy"
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "userId": "4a56",
+      "album": "New Dawn"
+    }
+  ],
   "photos": []
 }
