@@ -24,7 +24,33 @@
   "albums": [
     {
       "userId": "4a56",
-      "title": "New Dawn"
+      "title": "New Dawn",
+      "id": "3b2a"
+    },
+    {
+      "userId": "b33b",
+      "title": "New Horizon",
+      "id": "71d8"
+    },
+    {
+      "id": "a055",
+      "userId": "4a56",
+      "title": "Modern Metal Pants"
+    },
+    {
+      "id": "a778",
+      "userId": "4a56",
+      "title": "Luxurious Fresh Computer"
+    },
+    {
+      "id": "add2",
+      "userId": "4a56",
+      "title": "Unbranded Rubber Ball"
+    },
+    {
+      "id": "7b99",
+      "userId": "4a56",
+      "title": "Bespoke Metal Chicken"
     }
   ],
   "photos": []
